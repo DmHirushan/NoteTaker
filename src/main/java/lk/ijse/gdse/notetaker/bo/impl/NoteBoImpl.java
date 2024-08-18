@@ -2,13 +2,18 @@ package lk.ijse.gdse.notetaker.bo.impl;
 
 import lk.ijse.gdse.notetaker.bo.NoteBo;
 import lk.ijse.gdse.notetaker.dto.NoteDto;
+import lk.ijse.gdse.notetaker.util.AppUtil;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class NoteBoImpl implements NoteBo {
     @Override
     public String saveData(NoteDto noteDto) {
-        return null;
+        noteDto.setId(AppUtil.createNoteId());
+        System.out.println(noteDto);
+        return "Note saved successfully!";
     }
 
     @Override
