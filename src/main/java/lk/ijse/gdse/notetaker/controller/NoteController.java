@@ -26,7 +26,7 @@ public class NoteController {
     }
 
     @GetMapping(value = "/{noteId}")
-    public NoteDto getNote(@PathVariable String noteId){
+    public NoteDto getNote(@PathVariable ("noteId") String noteId){
         System.out.println(noteId);
         return null;
     }
@@ -37,7 +37,7 @@ public class NoteController {
         System.out.println(note + "updated");
     }
 
-    @DeleteMapping(value = "/{noteId")
+    @DeleteMapping(value = "/{noteId}")
     public void deleteNote(@PathVariable("noteId") String noteId){
         System.out.println(noteId + "deleted");
     }
