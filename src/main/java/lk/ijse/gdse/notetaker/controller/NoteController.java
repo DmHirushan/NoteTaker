@@ -25,21 +25,21 @@ public class NoteController {
         return null;
     }
 
-    @GetMapping
+    @GetMapping(value = "/{noteId}")
     public NoteDto getNote(@PathVariable String noteId){
         System.out.println(noteId);
         return null;
     }
 
-    @PatchMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @PatchMapping(value = "/{noteId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public void updateNote(@PathVariable("noteId") String noteId,NoteDto note){
         System.out.println(noteId);
-        System.out.println(note);
+        System.out.println(note + "updated");
     }
 
-    @DeleteMapping
+    @DeleteMapping(value = "/{noteId")
     public void deleteNote(@PathVariable("noteId") String noteId){
-        System.out.println(noteId);
+        System.out.println(noteId + "deleted");
     }
 
 
