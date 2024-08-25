@@ -16,25 +16,24 @@ import java.util.List;
 public class NoteController {
 
     @Autowired
-    private final NoteService noteBo;
+    private final NoteService noteService;
 
     //Todo: CRUD of the note
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> createNote(@RequestBody NoteDto noteDto){
 
-        return ResponseEntity.ok(noteBo.saveData(noteDto));
+        return ResponseEntity.ok(noteService.saveData(noteDto));
     }
 
     @GetMapping(value = "allnotes", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<NoteDto> getAllNotes(){
-        return noteBo.getAll();
+        return noteService.getAll();
     }
 
-    @GetMapping(value = "/{noteId}")
+    @GetMapping(value = "/{noteId}", produces = MediaType.APPLICATION_JSON_VALUE)
     public NoteDto getNote(@PathVariable ("noteId") String noteId){
-        System.out.println(noteId);
-        return null;
+        return noteService.getSelectedData(noteId);
     }
 
     @PatchMapping(value = "/{noteId}", produces = MediaType.APPLICATION_JSON_VALUE)

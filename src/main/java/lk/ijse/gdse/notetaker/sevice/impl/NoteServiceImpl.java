@@ -39,6 +39,11 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public NoteDto getSelectedData(String noteId) {
+        for (NoteDto noteDto : saveNoteTmp){
+            if (noteId.equals(noteDto.getId())){
+                return noteDto;
+            }
+        }
         return null;
     }
 
