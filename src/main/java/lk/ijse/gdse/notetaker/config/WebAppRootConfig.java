@@ -25,7 +25,7 @@ public class WebAppRootConfig {
     public DataSource dataSource() {
         var dmds = new DriverManagerDataSource();
         dmds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dmds.setUrl("jdbc:mysql://localhost:3306/noteTaker");
+        dmds.setUrl("jdbc:mysql://localhost:3306/notetaker");
         dmds.setUsername("root");
         dmds.setPassword("Ijse1234");
         return dmds;
@@ -39,7 +39,7 @@ public class WebAppRootConfig {
 
         LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
         factory.setJpaVendorAdapter(vendorAdapter);
-        factory.setPackagesToScan("com.acme.domain");
+        factory.setPackagesToScan("lk.ijse.gdse.notetaker.entity");
         factory.setDataSource(dataSource());
         return factory;
     }
