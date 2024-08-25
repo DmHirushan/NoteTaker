@@ -36,10 +36,13 @@ public class NoteController {
         return noteService.getSelectedData(noteId);
     }
 
-    @PatchMapping(value = "/{noteId}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public void updateNote(@PathVariable("noteId") String noteId,NoteDto note){
-        System.out.println(noteId);
-        System.out.println(note + "updated");
+    @PatchMapping(value = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String updateNote(@PathVariable("noteId") String noteId,NoteDto noteDto){
+        if (noteService.update(noteId, noteDto)){
+            return "Note update successfully";
+        }else {
+            return "something went wrong";
+        }
     }
 
     @DeleteMapping(value = "/{noteId}")
