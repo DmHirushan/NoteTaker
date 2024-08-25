@@ -1,8 +1,11 @@
 package lk.ijse.gdse.notetaker.service.impl;
 
+import lk.ijse.gdse.notetaker.dao.NoteDao;
 import lk.ijse.gdse.notetaker.service.NoteService;
 import lk.ijse.gdse.notetaker.dto.NoteDto;
 import lk.ijse.gdse.notetaker.util.AppUtil;
+import lk.ijse.gdse.notetaker.util.Mapping;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,20 +14,25 @@ import java.util.ListIterator;
 
 @Service
 public class NoteServiceImpl implements NoteService {
+    @Autowired
+    private NoteDao noteDao;
+
+    @Autowired
+   private Mapping mapping;
+
     List<NoteDto> saveNoteTmp = new ArrayList<>();
 
-    public NoteServiceImpl(){
-        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
-        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
-        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
-        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
-        System.out.println(saveNoteTmp);
-    }
+//    public NoteServiceImpl(){
+//        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
+//        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
+//        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
+//        saveNoteTmp.add(new NoteDto(AppUtil.createNoteId(), "Principles of SE", "SE Desc", "P1", "2024/08/25"));
+//        System.out.println(saveNoteTmp);
+//    }
 
     @Override
     public String saveData(NoteDto noteDto) {
-        noteDto.setId(AppUtil.createNoteId());
-        saveNoteTmp.add(noteDto);
+        noteDao.save(mapping.convertToEntity(noteDto));
         return "Note saved successfully!";
     }
 
@@ -41,39 +49,39 @@ public class NoteServiceImpl implements NoteService {
 //            }
 //        }
 
-        ListIterator<NoteDto> noteDtoListIterator = saveNoteTmp.listIterator();
-        while (noteDtoListIterator.hasNext()){
-            NoteDto noteDto = noteDtoListIterator.next();
-            if (noteDto.getId().equals(noteId)){
-                incomingNoteDto.setId(noteDto.getId());
-                noteDtoListIterator.set(incomingNoteDto);
-                System.out.println("updated Note : " + incomingNoteDto);
-                return true;
-            }
-        }
+//        ListIterator<NoteDto> noteDtoListIterator = saveNoteTmp.listIterator();
+//        while (noteDtoListIterator.hasNext()){
+//            NoteDto noteDto = noteDtoListIterator.next();
+//            if (noteDto.getId().equals(noteId)){
+//                incomingNoteDto.setId(noteDto.getId());
+//                noteDtoListIterator.set(incomingNoteDto);
+//                System.out.println("updated Note : " + incomingNoteDto);
+//                return true;
+//            }
+//        }
         return false;
     }
 
     @Override
     public boolean delete(String noteId) {
-        ListIterator<NoteDto> noteDtoListIterator = saveNoteTmp.listIterator();
-        while (noteDtoListIterator.hasNext()){
-            NoteDto noteDto = noteDtoListIterator.next();
-            if (noteDto.getId().equals(noteId)){
-                saveNoteTmp.remove(noteDto);
-                return true;
-            }
-        }
+//        ListIterator<NoteDto> noteDtoListIterator = saveNoteTmp.listIterator();
+//        while (noteDtoListIterator.hasNext()){
+//            NoteDto noteDto = noteDtoListIterator.next();
+//            if (noteDto.getId().equals(noteId)){
+//                saveNoteTmp.remove(noteDto);
+//                return true;
+//            }
+//        }
         return false;
     }
 
     @Override
     public NoteDto getSelectedData(String noteId) {
-        for (NoteDto noteDto : saveNoteTmp){
-            if (noteId.equals(noteDto.getId())){
-                return noteDto;
-            }
-        }
+//        for (NoteDto noteDto : saveNoteTmp){
+//            if (noteId.equals(noteDto.getId())){
+//                return noteDto;
+//            }
+//        }
         return null;
     }
 
