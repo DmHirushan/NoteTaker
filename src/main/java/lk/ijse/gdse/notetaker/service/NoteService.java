@@ -1,4 +1,4 @@
-package lk.ijse.gdse.notetaker.sevice;
+package lk.ijse.gdse.notetaker.service;
 
 import lk.ijse.gdse.notetaker.dto.NoteDto;
 

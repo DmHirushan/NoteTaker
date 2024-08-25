@@ -1,6 +1,6 @@
-package lk.ijse.gdse.notetaker.sevice.impl;
+package lk.ijse.gdse.notetaker.service.impl;
 
-import lk.ijse.gdse.notetaker.sevice.NoteService;
+import lk.ijse.gdse.notetaker.service.NoteService;
 import lk.ijse.gdse.notetaker.dto.NoteDto;
 import lk.ijse.gdse.notetaker.util.AppUtil;
 import org.springframework.stereotype.Service;
@@ -82,3 +82,4 @@ public class NoteServiceImpl implements NoteService {
         return saveNoteTmp;
     }
 }
+

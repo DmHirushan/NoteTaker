@@ -1,9 +1,10 @@
 package lk.ijse.gdse.notetaker.controller;
 
-import lk.ijse.gdse.notetaker.sevice.NoteService;
+import lk.ijse.gdse.notetaker.service.NoteService;
 import lk.ijse.gdse.notetaker.dto.NoteDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,10 +47,10 @@ public class NoteController {
         }
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping(value = "/{noteId}")
-    public void deleteNote(@PathVariable("noteId") String noteId){
+    public void deleteNote(@PathVariable("noteId") String noteId) {
         noteService.delete(noteId);
     }
-
 
 }
