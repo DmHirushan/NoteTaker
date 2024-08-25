@@ -1,10 +1,10 @@
-package lk.ijse.gdse.notetaker.bo;
+package lk.ijse.gdse.notetaker.sevice;
 
 import lk.ijse.gdse.notetaker.dto.NoteDto;
 
 import java.util.List;
 
-public interface NoteBo {
+public interface NoteService {
     String saveData(NoteDto noteDto);
     boolean update(String noteId, NoteDto noteDto);
     boolean delete(String noteId);
