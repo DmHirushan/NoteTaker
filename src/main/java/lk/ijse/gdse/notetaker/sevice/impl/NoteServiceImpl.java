@@ -56,6 +56,14 @@ public class NoteServiceImpl implements NoteService {
 
     @Override
     public boolean delete(String noteId) {
+        ListIterator<NoteDto> noteDtoListIterator = saveNoteTmp.listIterator();
+        while (noteDtoListIterator.hasNext()){
+            NoteDto noteDto = noteDtoListIterator.next();
+            if (noteDto.getId().equals(noteId)){
+                saveNoteTmp.remove(noteDto);
+                return true;
+            }
+        }
         return false;
     }
 

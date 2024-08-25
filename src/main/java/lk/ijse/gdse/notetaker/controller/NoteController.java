@@ -39,6 +39,7 @@ public class NoteController {
     @PatchMapping(value = "/{noteId}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public String updateNote(@PathVariable("noteId") String noteId,NoteDto noteDto){
         if (noteService.update(noteId, noteDto)){
+            System.out.println("from controller : " + noteDto);
             return "Note update successfully";
         }else {
             return "something went wrong";
@@ -47,7 +48,7 @@ public class NoteController {
 
     @DeleteMapping(value = "/{noteId}")
     public void deleteNote(@PathVariable("noteId") String noteId){
-        System.out.println(noteId + "deleted");
+        noteService.delete(noteId);
     }
 
 
